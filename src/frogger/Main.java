@@ -49,7 +49,7 @@ public class Main extends StaticScreenGame {
 	static final int DEFAULT_LEVEL_TIME = 60;
 	
 	private FroggerCollisionDetection frogCol;
-	private Frogger frog;
+	public Frogger frog; //cambiado de private
 	private AudioEfx audiofx;
 	private FroggerUI ui;
 	private WindGust wind;
