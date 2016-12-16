@@ -341,7 +341,6 @@ public class Main extends StaticScreenGame {
 			frog.update(deltaMs);
 			audiofx.update(deltaMs);
 			ui.update(deltaMs);
-
 			cycleTraffic(deltaMs);
 			frogCol.testCollision(movingObjectsLayer);
 			
