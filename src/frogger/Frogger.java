@@ -48,7 +48,7 @@ public class Frogger extends MovingEntity {
 	private Vector2D dirAnimation = new Vector2D(0,0);
 	
 	// Object to follow, such as Tree Log in the river
-	private MovingEntity followObject = null;
+	public MovingEntity followObject = null; //cambiado de private
 	
 	
 	public boolean isAlive = false;
