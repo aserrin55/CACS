@@ -89,11 +89,72 @@ public class TestFrog {
 					assertTrue(frogcd.isOutOfBounds());
 					
 					press(KeyEvent.VK_V,1);
+					System.out.println("End of test 1");
+					m.initializeLevel(1);
+					Thread.sleep(1000);
 					
 					/**Tests para la muerte en el agua**/
 					
-
+					Thread.sleep(4000);
+					System.out.println("Starts test 2");
+					r.keyPress(KeyEvent.VK_C);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_C);
+					r.keyPress(KeyEvent.VK_UP);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_UP);
+					for(int i=0;i<5;i++){
+						Thread.sleep(300);
+						r.keyPress(KeyEvent.VK_UP);
+						Thread.sleep(50);
+						r.keyRelease(KeyEvent.VK_UP);
+						assertTrue(frog.isAlive);
+					}
+					Thread.sleep(180);
+					r.keyPress(KeyEvent.VK_V);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_V);
+					Thread.sleep(300);
+					r.keyPress(KeyEvent.VK_UP);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_UP);
+					Thread.sleep(80);
+					if(frog.isAlive){
+						System.out.println("FrogStillAlive");
+						Thread.sleep(5400);
+						System.out.println("Is going to die");
+						assertFalse(frog.isAlive);
+					}else{
+						System.out.println("FrogDead");
+					}
 					
+					System.out.println("End of test 2");
+					m.initializeLevel(1);
+					Thread.sleep(1000);
+					
+					/**Tests para verificar si está en el río o en la carretera**/
+					
+					Thread.sleep(4000);
+					System.out.println("Starts test 2");
+					r.keyPress(KeyEvent.VK_C);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_C);
+					assertFalse(frogcd.isInRiver());
+					System.out.println("Is not in the river");
+					for(int i=0;i<7;i++){
+						if(i<5 && i>0){
+							assertTrue(frogcd.isOnRoad());
+							System.out.println("Is on road");
+						}
+						Thread.sleep(300);
+						r.keyPress(KeyEvent.VK_UP);
+						Thread.sleep(50);
+						r.keyRelease(KeyEvent.VK_UP);
+					}
+					assertTrue(frogcd.isInRiver());
+					System.out.println("Is in the river");
+					assertFalse(frogcd.isOnRoad());
+					System.out.println("Is not on road");
 
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -105,7 +166,6 @@ public class TestFrog {
 
 		// Ejecutamos el juego
 		m.run();
-		System.out.println("hola");
 
 		// minY = 416
 		// minX = 0
