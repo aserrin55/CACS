@@ -48,7 +48,7 @@ public class Main extends StaticScreenGame {
     static final int STARTING_LEVEL     = 1;
 	static final int DEFAULT_LEVEL_TIME = 60;
 	
-	private FroggerCollisionDetection frogCol;
+	public FroggerCollisionDetection frogCol;
 	public Frogger frog; //cambiado de private
 	private AudioEfx audiofx;
 	private FroggerUI ui;

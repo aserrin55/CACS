@@ -19,7 +19,7 @@ public class TestFrog2 {
 	}
 
 	@Test
-	public void testSpritePositionInGodMode() {
+	public void testIsAliveInWater() {
 		Main m = new Main();
 
 		// Hilo de ejecución del test
@@ -32,11 +32,39 @@ public class TestFrog2 {
 					Robot r = new Robot();
 					r.keyPress(KeyEvent.VK_SPACE);
 					r.keyPress(KeyEvent.VK_C);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_C);
 					r.keyPress(KeyEvent.VK_UP);
-					Thread.sleep(500);
-
-					assertEquals(frog.getPosition().getX(), 192.0, 0);
-					assertEquals(frog.getPosition().getY(), 384.0, 0);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_UP);
+					for(int i=0;i<5;i++){
+						Thread.sleep(300);
+						r.keyPress(KeyEvent.VK_UP);
+						Thread.sleep(50);
+						r.keyRelease(KeyEvent.VK_UP);
+						assertTrue(frog.isAlive);
+					}
+					Thread.sleep(180);
+					r.keyPress(KeyEvent.VK_V);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_V);
+					Thread.sleep(300);
+					r.keyPress(KeyEvent.VK_UP);
+					Thread.sleep(50);
+					r.keyRelease(KeyEvent.VK_UP);
+					Thread.sleep(80);
+					if(frog.isAlive){
+						System.out.println("FrogStillAlive");
+						Thread.sleep(5000);
+						System.out.println("Is going to die");
+						assertFalse(frog.isAlive);
+					}else{
+						System.out.println("FrogDead");
+						Thread.sleep(50);
+						r.keyPress(KeyEvent.VK_ESCAPE);
+						r.keyRelease(KeyEvent.VK_ESCAPE);
+					}
+					
 
 				} catch (AWTException e) {
 					// TODO Auto-generated catch block
@@ -48,19 +76,14 @@ public class TestFrog2 {
 			}
 		});
 		x.start();
-
-		// Ejecutamos el juego
 		m.run();
-
-		// minY = 416
-		// minX = 0
-		// maxX = 384
-		// maxY = 32
-
-		// pasoX = 32
-		// pasoY = 32
-
-		// posIni = < X:192.0, Y:416.0>
+	}
+	public void testIsInTheRiver() {
+		
+	}
+	
+	public void testIsOnRoad() {
+		
 	}
 
 }
