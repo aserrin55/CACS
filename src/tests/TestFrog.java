@@ -151,6 +151,7 @@ public class TestFrog {
 						Thread.sleep(50);
 						r.keyRelease(KeyEvent.VK_UP);
 					}
+					Thread.sleep(500);
 					assertTrue(frogcd.isInRiver());
 					System.out.println("Is in the river");
 					assertFalse(frogcd.isOnRoad());
